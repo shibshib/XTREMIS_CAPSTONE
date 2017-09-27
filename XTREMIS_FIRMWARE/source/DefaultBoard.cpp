@@ -104,6 +104,9 @@ void setup() {
     board.useAccel = true;
     board.useAux = false;
     
+    // to enable timing, set to true
+    board.timeSynced = false;
+    
     sampleCounter=0;
     board.powerUpSequence();
 
@@ -148,9 +151,11 @@ void loop() {
             } else {
                 if(board.useAccel){
                     // Send standard packet with channel data
-                    board.sendChannelDataWithAccel();
+                    board.sampleCounter++;
+                  //  board.sendChannelDataWithAccel();
                 } else {
-                    board.sendChannelData();
+                    board.sampleCounter++;
+                  //  board.sendChannelData();
                 }
             }
             sampleCounter++;
@@ -158,6 +163,8 @@ void loop() {
         
     }
 
+    // COMMENT THIS OUT IF YOU DON'T WANT THE BOARD TO PICK UP WHAT THE ARDUINO IS SAYING 
+    
     // Check serial 0 for new data
     if (board.hasDataSerial0()) {
         // Read one char from the serial 0 port

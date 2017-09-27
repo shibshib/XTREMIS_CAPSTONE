@@ -478,7 +478,7 @@ void XTREMIS_Library::powerUpSequence(void){
 */
 boolean XTREMIS_Library::boardBeginDebug(void) {
     // Initalize the serial port baud rate
-    Serial0.begin(HIGH_OUTPUT_BAUD_RATE);
+    Serial0.begin(XTREMIS_BAUD_RATE);
 
     // Initalize the serial debug port
     Serial1.begin(XTREMIS_BAUD_RATE);
@@ -521,12 +521,12 @@ void XTREMIS_Library::boardReset(void) {
     initialize(); // initializes accelerometer and on-board ADS and on-daisy ADS if present
     delay(500);
     configureLeadOffDetection(LOFF_MAG_6NA, LOFF_FREQ_31p2HZ);
-  /*
+  
     Serial0.println("XTREMIS V1 8 channel");
     Serial0.print("On Board ADS1299 Device ID: 0x"); Serial0.println(ADS_getDeviceID(ON_BOARD),HEX);
     Serial0.print("LSM6DS0 Device ID: 0x"); Serial0.print(LSM6DS0_getDeviceID(),HEX); Serial0.println(" (Disabled for now)");
-    Serial0.println("Firmware: v2.0.1"); */
-  //  sendEOT();
+    Serial0.println("Firmware: v2.0.1"); 
+    sendEOT();
 }
 
 /**
@@ -840,6 +840,7 @@ void XTREMIS_Library::printAllRegisters(){
  */
 void XTREMIS_Library::sendChannelDataWithAccel(void)  {
 
+    /*  uncomment for online streaming
     Serial0.write('A'); // 0x41
 
     Serial0.print(sampleCounter); // 1 byte
@@ -849,7 +850,7 @@ void XTREMIS_Library::sendChannelDataWithAccel(void)  {
     accelWriteAxisData(); // 6 bytes
 
     Serial0.write(XTREMIS_EOP_STND_ACCEL); // 0xC0
-
+     * */
     sampleCounter++;
 
 }
@@ -891,6 +892,7 @@ void XTREMIS_Library::sendChannelDataWithRawAux(void) {
  */
 void XTREMIS_Library::sendChannelDataWithTimeAndAccel(void) {
 
+    /*
     Serial0.write('A');
 
     Serial0.write(sampleCounter); // 1 byte
@@ -922,7 +924,7 @@ void XTREMIS_Library::sendChannelDataWithTimeAndAccel(void) {
     } else {
         Serial0.write(XTREMIS_EOP_ACCEL_TIME_SYNCED); // 0xC4
     }
-
+    */
     sampleCounter++;
 }
 
@@ -974,6 +976,7 @@ void XTREMIS_Library::sendChannelDataWithTimeAndRawAux(void) {
  *  Adds stop byte `XTREMIS_EOP_STND_ACCEL`. See `XTREMIS_Library_Definitions.h`
  */
 void XTREMIS_Library::sendChannelData(void) {
+    /* UNCOMMENT FOR ONLINE STREAMING
     Serial0.print('A'); // 1 byte
     
     Serial0.write(sampleCounter); // 1 byte
@@ -992,7 +995,8 @@ void XTREMIS_Library::sendChannelData(void) {
     
  //   writeTimeCurrent(); // 4 bytes
 
-    Serial0.write(XTREMIS_EOP_STND_ACCEL); // 0xC0
+    Serial0.write(XTREMIS_EOP_STND_ACCEL); // 0xC0 */
+    
     sampleCounter++;
 }
 
