@@ -85,6 +85,10 @@ To collect data offline, run the communications module by going to the XTRMS_SCR
 ``` 
 python communicator.py
 ```
+If you run into errors, try 
+```
+python3 communicator.py
+```
 
 You will be presented with a simple interface as in the image below:
 
