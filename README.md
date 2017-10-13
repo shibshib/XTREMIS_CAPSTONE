@@ -134,8 +134,26 @@ This is asking XTREMIS to collect data only from channel 1 for 1 minute by turni
 
 #### Sampling rate
 Currently, XTREMIS is set up for a fixed 1024 SPS sample rate. You can change this by going to Line 1107 in `XTREMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library.cpp` and changing the following line
-`
+
+```
 WREG(CONFIG1,NO_CLK_500SPS,BOARD_ADS); // turn off clk output and specify SPS
-`
+```
+
 `NO_CLK_1KSPS` represents 1K SPS in sample rate. The different values for samples-per-second can be found in `XTREMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library_Definitions.h` in line 132. 
+
+Additionally, when you change the sample rate you must also change the block allocation flag FR in `XTREMIS_FIRMWARE/source/DefaultBoard.cpp` Line 22. 
+
+```
+#define FR 1.0
+```
+
+This value determines how blocks are allocated and, in turn, how time is affected in sending the time commands defined above. `FR` is a multiple of 1024. Therefore, if sample rate is 500 SPS then `FR` should be:
+
+```
+#define FR 0.5
+```
+and so on. 
+
+
+
 
