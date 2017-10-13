@@ -1,11 +1,11 @@
 
-# Project Title
+# XTREMIS 
 
-One Paragraph of project description goes here
+XTREMIS is an ECG/EMG/EEG board that is capable of collecting data at high sampling rates. Additionally, its small form factor allows for it to be embedded in clothes or pockets. It is based on the ADS1299 chip, and is inspired by the OpenBCI open source project. 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. 
 
 ### Setup
 #### MCU FIRMWARE
@@ -25,7 +25,7 @@ Once you have your IDE installed and running, you have to install the ESP8266 co
 
 #### SCRIPTS
 
-To run the scripts inside XTRMS_SCRIPTS, you need to install Python 2.7 or later. You will also need the MNE, TKinter, numpy, sklearn, scipy, pickle, pandas, and seaborn. You can install them using the pip python package management tool.  
+To run the scripts inside XTRMS_SCRIPTS, you need to install Python 3.0 or later. You will also need the MNE, TKinter, numpy, sklearn, scipy, pickle, pandas, and seaborn. You can install them using the pip python package management tool.  
 
 ```
 pip install mne numpy sklearn scipy pickle pandas seaborn
@@ -78,8 +78,56 @@ Once you are ready to upload your code to the Wi-Fi module, click upload and kee
 ![XTRMS](https://i.imgur.com/mSIYlfm.jpg)
 
 
+### OFFLINE DATA COLLECTION
 
+To collect data offline, run the communications module by going to the XTRMS_SCRIPTS/Communications directory and running 
 
+``` 
+python communicator.py
+```
 
+You will be presented with a simple interface as in the image below:
 
+[Communicator.py](https://i.imgur.com/GWiK0zY.png)
+
+The top box, labeled "Commands" lets you type in commands to be sent to XTREMIS to set up various parameters. A longer list of commands can be found in XTRMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library.cpp in Function processChar(). Below are some of the most typical commands:
+
+| Command | Description |
+| --- | --- |
+| b | Start Streaming    |
+| s | Stop Streaming     |
+| 1 | Turn off channel 1 |
+| 2 | Turn off channel 2 |
+| 3 | Turn off channel 3 |
+| 4 | Turn off channel 4 |
+| 5 | Turn off channel 5 |
+| 6 | Turn off channel 6 |
+| 7 | Turn off channel 7 |
+| 8 | Turn off channel 8 |
+| ! | Turn on channel 1 |
+| @ | Turn on channel 2 |
+| # | Turn on channel 3 |
+| $ | Turn on channel 4 |
+| % | Turn on channel 5 |
+| ^ | Turn on channel 6 |
+| & | Turn on channel 7 |
+| * | Turn on channel 8 |
+| U | Collect data for approx. 30 seconds |
+| T | Collect data for approx. 1 minute   |
+| A | Collect data for approx. 5 minutes  |
+| S | Collect data for approx. 15 minutes |
+| F | Collect data for approx. 30 minutes |
+| G | Collect data for approx. 1 hour     |
+| H | Collect data for approx. 2 hours    |
+| J | Collect data for approx. 4 hours    |
+| K | Collect data for approx. 12 hours   |
+| L | Collect data for approx. 24 hours   |
+| j | Close SD file                       | 
+
+An example of a full command can be:
+
+```
+2345678bT
+```
+This is asking XTREMIS to collect data only from channel 1 for 1 minute by turning off channels 2-8, starting the stream with `b` and asking for 1 minute's worth of data with `T`.
 
