@@ -131,3 +131,11 @@ An example of a full command can be:
 ```
 This is asking XTREMIS to collect data only from channel 1 for 1 minute by turning off channels 2-8, starting the stream with `b` and asking for 1 minute's worth of data with `T`.
 
+
+#### Sampling rate
+Currently, XTREMIS is set up for a fixed 1024 SPS sample rate. You can change this by going to Line 1107 in `XTREMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library.cpp` and changing the following line
+`
+WREG(CONFIG1,NO_CLK_500SPS,BOARD_ADS); // turn off clk output and specify SPS
+`
+`NO_CLK_1KSPS` represents 1K SPS in sample rate. The different values for samples-per-second can be found in `XTREMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library_Definitions.h` in line 132. 
+
