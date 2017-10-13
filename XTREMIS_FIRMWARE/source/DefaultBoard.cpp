@@ -19,7 +19,7 @@
 #define BLOCK_24HR   10368000
 */
 // This is assuming a 1KSPS * factor rate
-#define FR 0.5
+#define FR 1.0
 #define BLOCK_30SEC  3600*FR
 #define BLOCK_1MIN   7200*FR
 #define BLOCK_5MIN   36000*FR
