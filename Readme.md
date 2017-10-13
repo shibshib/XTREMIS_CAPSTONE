@@ -88,7 +88,7 @@ python communicator.py
 
 You will be presented with a simple interface as in the image below:
 
-[Communicator.py](https://i.imgur.com/GWiK0zY.png)
+![Communicator.py](https://i.imgur.com/GWiK0zY.png)
 
 The top box, labeled "Commands" lets you type in commands to be sent to XTREMIS to set up various parameters. A longer list of commands can be found in XTRMIS_FIRMWARE/chipKIT-libraries/BoardLib/XTREMIS_Library.cpp in Function processChar(). Below are some of the most typical commands:
 
