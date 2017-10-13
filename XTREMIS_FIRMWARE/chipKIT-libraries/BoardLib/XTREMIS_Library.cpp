@@ -1104,7 +1104,7 @@ void XTREMIS_Library::initialize_ads(){
     delay(40);
     resetADS(BOARD_ADS); // reset the on-board ADS registers, and stop DataContinuousMode
     delay(10);
-    WREG(CONFIG1,NO_CLK_500SPS,BOARD_ADS); // turn off clk output and specify SPS
+    WREG(CONFIG1,NO_CLK_1KSPS,BOARD_ADS); // turn off clk output and specify SPS
     delay(40);
 
 
