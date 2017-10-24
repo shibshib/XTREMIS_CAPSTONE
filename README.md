@@ -160,4 +160,13 @@ and so on.
 
 
 
+### PINS
+
+XTREMIS has a total of 20 pins on top, each corresponding to a channel, ground, reference, or power pin on the ADS1299. The figures below show what each channel input is and what it corresponds to. The figure on top shows what each pin represents (that is, channels 1N to 8N, and channels 1P to 8P, and SRB1 and SRB2) and the figure on the bottom shows the arrangement of pins in real life. The arrangements correspond to each other in the top figure and in the bottom figure. **Note that the reference channel must be connected to the SRB2 pin, as SRB1 is disabled by default.**
+
+
+![CHANN](https://i.imgur.com/undefined.png)
+
+![XTRMSTOP](https://i.imgur.com/HW9kWPN.jpg)
+
 
